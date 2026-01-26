@@ -1,6 +1,6 @@
 import { Request, Response, NextFunction } from "express";
 import { body, validationResult } from "express-validator";
-import { HttpStatus } from "@/constants/httpStatus";
+import { HttpStatus } from "@/constants/http-statuses";
 
 export const validateTimeEntry = [
   body("date")
