@@ -8,6 +8,7 @@ import { useState } from "react";
 
 import { cn } from "@/lib/utils";
 import { createTimeEntry } from "@/api/entry-api";
+import { TimeEntry } from "@/types/time-entries";
 import { Button } from "@/components/ui/Button";
 import { Calendar } from "@/components/ui/Calendar";
 import {
@@ -56,7 +57,7 @@ const DEFAULT_PROJECTS = [
 ];
 
 type Props = {
-  onSubmit?: (data: TimeEntryFormValues) => void | Promise<void>;
+  onSubmit: (createdEntry: TimeEntry) => void | Promise<void>;
 };
 
 export function TimeEntryForm({ onSubmit }: Props) {
@@ -76,7 +77,7 @@ export function TimeEntryForm({ onSubmit }: Props) {
     setIsLoading(true);
     setError(null);
     try {
-      await createTimeEntry(data);
+      const createdEntry = await createTimeEntry(data);
 
       form.reset({
         date: new Date(),
@@ -84,7 +85,7 @@ export function TimeEntryForm({ onSubmit }: Props) {
         hours: undefined,
         description: "",
       });
-      onSubmit?.(data);
+      onSubmit(createdEntry);
     } catch (err) {
       const errorMessage =
         err instanceof Error ? err.message : "Failed to submit time entry";

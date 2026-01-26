@@ -2,22 +2,13 @@
 import { API_ENDPOINTS } from "@/constants";
 import apiClient from "./";
 import axios from "axios";
+import { TimeEntry } from "@/types/time-entries";
 
 export interface CreateTimeEntryRequest {
   date: Date;
   project: string;
   hours: number;
   description: string;
-}
-
-export interface TimeEntry {
-  id: number;
-  date: Date;
-  project: string;
-  hours: number;
-  description: string;
-  createdAt: string;
-  updatedAt: string;
 }
 
 export async function createTimeEntry(
