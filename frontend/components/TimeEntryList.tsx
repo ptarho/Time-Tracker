@@ -15,6 +15,9 @@ type GroupedEntries = {
 
 export default function TimeEntryList({ entries }: Props) {
   // TODO: refactor to optimize performance
+  // the idea is to move business logic to the backend and change onFormSubmit
+  // to properly handle the creation of the entry and the refresh of the list
+  // by changing data structure of the entries state
   const groupedEntries = useMemo(() => {
     const groups = new Map<string, TimeEntry[]>();
 
