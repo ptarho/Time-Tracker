@@ -14,6 +14,10 @@ A full-stack time tracking application built with Next.js, Express, and PostgreS
 - **Backend**: Express.js, TypeScript, Prisma ORM
 - **Database**: PostgreSQL
 
+## Data Flow
+
+![Data Flow Diagram](assets/data-flow.png)
+
 ## Setup
 
 ### Prerequisites
