@@ -5,7 +5,7 @@ import axios from "axios";
 import { TimeEntry } from "@/types/time-entries";
 
 export interface CreateTimeEntryRequest {
-  date: Date;
+  date: string;
   project: string;
   hours: number;
   description: string;

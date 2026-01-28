@@ -77,7 +77,11 @@ export function TimeEntryForm({ onSubmit }: Props) {
     setIsLoading(true);
     setError(null);
     try {
-      const createdEntry = await createTimeEntry(data);
+      // Normalize the selected date to a date-only string
+      const createdEntry = await createTimeEntry({
+        ...data,
+        date: format(data.date, "yyyy-MM-dd"),
+      });
 
       form.reset({
         date: new Date(),
